@@ -8,3 +8,5 @@ This is a simple tool that blocking Azuki's FBT moderation lists, without the li
 - Prevent FBT Heaven instance Bans
 - Prevent FBT Heaven instance Mutes
 - Use Admin tools (Admin door for the roof etc..)
+
+Thanks to XoX-Toxic for the funny idea :*
