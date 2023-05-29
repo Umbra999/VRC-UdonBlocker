@@ -29,18 +29,7 @@ namespace VRC_AntiFBTHeaven
 
             ToggleHostBlock(false);
 
-            Task ListDumper = Task.Run(async () =>
-            {
-                string MutedUsers = await APIClient.DownloadList(APIClient.MutedUsers);
-                Logger.LogDebug("MUTED USERS: \n" + MutedUsers);
-
-                string AdminUsers = await APIClient.DownloadList(APIClient.AdminUsers);
-                Logger.LogDebug("ADMIN USERS: \n" + AdminUsers);
-
-                string BannedUsers = await APIClient.DownloadList(APIClient.BannedUsers);
-                Logger.LogDebug("BANNED USERS: \n" + BannedUsers);
-
-            });
+            Task ListDumper = Task.Run(APIClient.FetchLists);
             ListDumper.Wait();
 
             ScanLog();
@@ -112,6 +101,16 @@ namespace VRC_AntiFBTHeaven
                 {
                     ToggleHostBlock(line.Contains("Destination set: wrld_d319c58a-dcec-47de-b5fc-21200116462c"));
                 }
+
+                else if (line.Contains("OnPlayerJoined "))
+                {
+                    string[] parts = line.Split(new[] { "OnPlayerJoined " }, StringSplitOptions.None);
+                    string DisplayName = parts[1];
+
+                    if (APIClient.MutedUsers.Contains(DisplayName)) Logger.Log($"Muted User {DisplayName} connected");
+                    if (APIClient.AdminUsers.Contains(DisplayName)) Logger.Log($"Admin User {DisplayName} connected");
+                    if (APIClient.BannedUsers.Contains(DisplayName)) Logger.Log($"Banned User {DisplayName} connected");
+                }
             }
         }
 
@@ -124,7 +123,6 @@ namespace VRC_AntiFBTHeaven
                 using var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 using var reader = new StreamReader(stream);
 
-                // Set the file position to the last known position
                 reader.BaseStream.Seek(LastReadOffset, SeekOrigin.Begin);
 
                 string line;
@@ -133,7 +131,6 @@ namespace VRC_AntiFBTHeaven
                     lines.Add(line);
                 }
 
-                // Update the last known position to the current end of the file
                 LastReadOffset = reader.BaseStream.Position;
             }
             catch (IOException ex)

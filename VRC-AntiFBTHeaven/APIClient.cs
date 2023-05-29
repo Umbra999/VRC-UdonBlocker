@@ -5,11 +5,11 @@ namespace VRC_AntiFBTHeaven
 {
     internal class APIClient
     {
-        public static string MutedUsers = "https://pastebin.com/raw/VjXi7YRP";
-        public static string AdminUsers = "https://pastebin.com/raw/FVZUy0XG";
-        public static string BannedUsers = "https://pastebin.com/raw/vEZVMirL";
+        public static string[] MutedUsers;
+        public static string[] AdminUsers;
+        public static string[] BannedUsers;
 
-        public static async Task<string> DownloadList(string URL)
+        private static async Task<string> DownloadList(string URL)
         {
             HttpClient Client = new(new HttpClientHandler { UseCookies = false, AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate });
             Client.DefaultRequestHeaders.Add("User-Agent", $"Mozilla/5.0 ({Utils.RandomString(25)})");
@@ -21,6 +21,20 @@ namespace VRC_AntiFBTHeaven
             if (Resp.IsSuccessStatusCode) return await Resp.Content.ReadAsStringAsync();
 
             return null;
+        }
+
+        public static async Task FetchLists()
+        {
+            string MutedUsersList = await DownloadList("https://pastebin.com/raw/VjXi7YRP");
+            if (MutedUsersList != null) MutedUsers = MutedUsersList.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
+            string AdminUsersList = await DownloadList("https://pastebin.com/raw/FVZUy0XG");
+            if (AdminUsersList != null) AdminUsers = AdminUsersList.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
+            string BannedUsersList = await DownloadList("https://pastebin.com/raw/vEZVMirL");
+            if (BannedUsersList != null) BannedUsers = BannedUsersList.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
+            Logger.LogDebug("Moderation Dump created");
         }
     }
 }
