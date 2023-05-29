@@ -1,7 +1,7 @@
 # VRC-AntiFBTHeaven
-Prevents FBT Heaven Moderation System and allows you to use the Admin tools [NO EAC BYPASS NEEDED] This tool is ALLOWED by VRChat and you won't get banned for it!
+Prevents FBT Heaven Moderation System and allows you to use the Admin tools [NO EAC BYPASS NEEDED] This tool is ALLOWED by VRChat and you won't get banned for it
 
-This is a simple tool that blocking Azuki's FBT moderation lists, without the list the Moderation system is losing its power
+This is a simple tool thats blocking Azuki's FBT moderation lists, without the lists the Moderation system is losing its power and you are able to do the following
 
 - Prevent FBT Heaven global Bans
 - Prevent FBT Heaven global Mutes
