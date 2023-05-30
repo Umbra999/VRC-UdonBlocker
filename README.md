@@ -17,4 +17,4 @@ This tool gets improved over time to fully eliminate the United Moderation tools
 
 Proof of working: https://cdn.discordapp.com/attachments/855072998796296212/1112797074245832805/image.png
 
-For Azuki: Yo Azuki, you know automod is against TOS, you are not allowed to have a Ban and Mute list at all. You NEED to do moderate on your own and only per instance. I reported you for this with proof so enjoy your Ban :)
+For Azuki: Yo Azuki, you know automod is against TOS, you are not allowed to have a Ban and Mute list at all. You NEED to moderate on your own and only per instance. I reported you for this with proof so enjoy your Ban :)
