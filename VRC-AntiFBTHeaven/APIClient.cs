@@ -25,16 +25,26 @@ namespace VRC_AntiFBTHeaven
 
         public static async Task FetchLists()
         {
-            string MutedUsersList = await DownloadList("https://pastebin.com/raw/VjXi7YRP");
-            if (MutedUsersList != null) MutedUsers = MutedUsersList.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+            try
+            {
+                string MutedUsersList = await DownloadList("https://pastebin.com/raw/VjXi7YRP");
+                if (MutedUsersList != null) MutedUsers = MutedUsersList.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 
-            string AdminUsersList = await DownloadList("https://pastebin.com/raw/FVZUy0XG");
-            if (AdminUsersList != null) AdminUsers = AdminUsersList.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+                string AdminUsersList = await DownloadList("https://pastebin.com/raw/FVZUy0XG");
+                if (AdminUsersList != null) AdminUsers = AdminUsersList.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 
-            string BannedUsersList = await DownloadList("https://pastebin.com/raw/vEZVMirL");
-            if (BannedUsersList != null) BannedUsers = BannedUsersList.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+                string BannedUsersList = await DownloadList("https://pastebin.com/raw/vEZVMirL");
+                if (BannedUsersList != null) BannedUsers = BannedUsersList.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 
-            Logger.LogDebug("Moderation Dump created");
+                Logger.LogDebug("Moderation Dump created");
+                Logger.LogDebug($"{MutedUsers.Length} Muted Users");
+                Logger.LogDebug($"{AdminUsers.Length} Admin Users");
+                Logger.LogDebug($"{BannedUsers.Length} Banned Users");
+            }
+            catch 
+            {
+                Logger.LogError("Failed to create Moderation dump, this can happen if the lists are outdated, check my Github for a udpdated version");
+            }
         }
     }
 }
