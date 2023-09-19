@@ -11,7 +11,7 @@ namespace VRC_AntiFBTHeaven
             Console.Title = "ANTI FBT HEAVEN BY UMBRA";
 
             WindowsIdentity identity = WindowsIdentity.GetCurrent();
-            WindowsPrincipal principal = new WindowsPrincipal(identity);
+            WindowsPrincipal principal = new(identity);
             if (!principal.IsInRole(WindowsBuiltInRole.Administrator))
             {
 

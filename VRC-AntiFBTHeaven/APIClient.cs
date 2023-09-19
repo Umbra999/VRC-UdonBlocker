@@ -27,13 +27,13 @@ namespace VRC_AntiFBTHeaven
         {
             try
             {
-                string MutedUsersList = await DownloadList("https://pastebin.com/raw/VjXi7YRP");
+                string MutedUsersList = await DownloadList("https://pastebin.com/raw/YwBVVUCk");
                 if (MutedUsersList != null) MutedUsers = MutedUsersList.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 
-                string AdminUsersList = await DownloadList("https://pastebin.com/raw/FVZUy0XG");
+                string AdminUsersList = await DownloadList("https://pastebin.com/raw/71DXayVf");
                 if (AdminUsersList != null) AdminUsers = AdminUsersList.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 
-                string BannedUsersList = await DownloadList("https://pastebin.com/raw/vEZVMirL");
+                string BannedUsersList = await DownloadList("https://pastebin.com/raw/Jmj7Miin");
                 if (BannedUsersList != null) BannedUsers = BannedUsersList.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 
                 Logger.LogDebug("Moderation Dump created");
