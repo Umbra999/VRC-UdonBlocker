@@ -11,7 +11,3 @@ This is a simple tool thats blocking Azuki's FBT moderation lists, without the l
 Requirements: NET 7.0 https://dotnet.microsoft.com/en-us/download/dotnet/7.0
 
 This tool gets improved over time to fully eliminate the United Moderation tools. Normal players should not have the power to do such strong moderations in a lot of big worlds just because they dont like someone. United Moderation itself can not patch this tool up, if they get rid of the lists or replace them i will also replace them or put a alternate way in to fully block udon moderation.
-
-Proof of working: https://cdn.discordapp.com/attachments/855072998796296212/1112797074245832805/image.png
-
-Archival Note: This method still works for other worlds which still taking advantage of the StringDownloader for their moderations, however FBT Heaven is not using a list anymore and using a hardcoded list in a world now. If Azuki decides to swap back to URLs i will unarchive this repo and update it. Just use a Client to get around this restriction for now, theres nothing Azuki can do against it and will never be able to :)
