@@ -40,9 +40,9 @@ namespace VRC_AntiFBTHeaven
         {
             List<string> targetDomains = new()
             {
-                "pastebin.com",
-                "github.io",
-                "gist.githubusercontent.com"
+                "0.0.0.0 pastebin.com",
+                "0.0.0.0 github.io",
+                "0.0.0.0 gist.githubusercontent.com"
             };
 
             string hostsFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "drivers/etc/hosts");
